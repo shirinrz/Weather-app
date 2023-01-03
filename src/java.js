@@ -70,12 +70,12 @@ function locationTemp(position) {
 let currentTemp = document.querySelector("#currentLocation");
 currentTemp.addEventListener("click", navigateCurrentLocation);
 
-//tabdil C to F
+//convert C to F
 function changeCtoF(event) {
   event.preventDefault();
   let convert = document.querySelector("#realDegree");
-  let tempF = convert.innerHTML; // inja bayad daraje roentekhab konam//
-  tempF = Number(tempF); // be integer tabdil mikonam baraye etminan bishtar chon innerhtml string hast//
+  let tempF = convert.innerHTML; // choose degree from html//
+  tempF = Number(tempF); // because innerHTML is a string I should change it to integer value//
   convert.innerHTML = Math.round((tempF * 9) / 5 + 32);
 }
 
