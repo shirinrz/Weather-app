@@ -1,5 +1,4 @@
-let now = new Date();
-let h3 = document.querySelector(".day-time");
+let date = new Date();
 let days = [
   "Sunday",
   "Monday",
@@ -9,25 +8,25 @@ let days = [
   "Friday",
   "Saturday",
 ];
-let day = days[now.getDay()];
-let hour = now.getHours();
+let day = days[date.getDay()];
+let hour = date.getHours();
 if (hour < 10) {
   hour = `0${hour}`;
 }
-let min = now.getMinutes();
+let min = date.getMinutes();
 if (min < 10) {
-  min = `0${hour}`;
+  min = `0${min}`;
 }
-let year = now.getFullYear();
-let month = now.getMonth();
-let date = now.getDate();
+let year = date.getFullYear();
+let month = date.getMonth();
+let rightDate = date.getDate();
 
-h3.innerHTML = ` ${day}, ${hour} : ${min} `;
-let fullTime = document.querySelector(".fulltime");
-fullTime.innerHTML = `${year}/${month}/${date}    ${hour}:${min}`;
+document.querySelector("#day_time").innerHTML = ` ${day}, ${hour} : ${min} `;
+let fullTime = document.querySelector("#fulltime");
+fullTime.innerHTML = `${year}/${month}/${rightDate}    ${hour}:${min}`;
 
 function search(event) {
-  debugger;
+  //debugger;
   event.preventDefault();
   let city = document.querySelector("#search-city");
   let change = document.querySelector("#changeCity");
@@ -43,13 +42,26 @@ function showTemperature(response) {
   ).innerHTML = `${response.data.name} , ${response.data.sys.country} `;
   let degree = document.querySelector("#realDegree");
   degree.innerHTML = Math.round(response.data.main.temp);
+
+  celsiusTemperature = Math.round(response.data.main.temp);
+
   console.log(response.data);
   document.querySelector("#descripsion").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windSpeed").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("click", search);
@@ -67,25 +79,32 @@ function locationTemp(position) {
   axios.get(apiUrlC).then(showTemperature);
 }
 
-let currentTemp = document.querySelector("#currentLocation");
-currentTemp.addEventListener("click", navigateCurrentLocation);
+let currentPositionTemp = document.querySelector("#currentLocation");
+currentPositionTemp.addEventListener("click", navigateCurrentLocation);
+navigateCurrentLocation();
 
 //convert C to F
 function changeCtoF(event) {
   event.preventDefault();
-  let convert = document.querySelector("#realDegree");
-  let tempF = convert.innerHTML; // choose degree from html//
-  tempF = Number(tempF); // because innerHTML is a string I should change it to integer value//
-  convert.innerHTML = Math.round((tempF * 9) / 5 + 32);
+  let fahrenheiTemperature = document.querySelector("#realDegree");
+  convertC.classList.remove("active");
+  convertF.classList.add("active");
+  //let tempF = convert.innerHTML; // choose degree from html//
+  //tempF = Number(tempF); // because innerHTML is a string I should change it to integer value//
+  fahrenheiTemperature.innerHTML = Math.round(
+    (celsiusTemperature * 9) / 5 + 32
+  );
 }
 
 function changeFtoC(event) {
   event.preventDefault();
-  let convert = document.querySelector("#realDegree");
-  let tempc = convert.innerHTML;
-  tempc = Number(tempc);
-  convert.innerHTML = Math.round(((tempc - 32) * 5) / 9);
+  convertF.classList.remove("active");
+  convertC.classList.add("active");
+  let cTemperature = document.querySelector("#realDegree");
+  cTemperature.innerHTML = Math.round(celsiusTemperature);
 }
+let celsiusTemperature = null;
+
 let convertF = document.querySelector("#fahrenheit");
 convertF.addEventListener("click", changeCtoF);
 

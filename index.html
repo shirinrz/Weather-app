@@ -31,69 +31,77 @@
       <div class="card">
         <div class="card-body">
           <form class="row" id="search-form">
-            <div class="col-9">
+            <div class="col-6">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Search your City"
                 id="search-city"
+                autocomplete="off"
               />
             </div>
             <div class="col-3">
-              <button type="submit" class="btn btn-primary mb-3" id="findCity">
+              <button
+                type="submit"
+                class="btn btn-primary mb-3 w-100"
+                id="findCity"
+              >
                 Search City
               </button>
             </div>
+            <div class="col-3">
+              <button
+                type="submit"
+                class="btn btn-primary mb-3 w-100"
+                id="currentLocation"
+              >
+                Current Location
+              </button>
+            </div>
           </form>
-          <div>
-            <button
-              type="submit"
-              class="btn btn-primary mb-3"
-              id="currentLocation"
-            >
-              Current Location
-            </button>
-          </div>
+
           <div class="row">
             <div class="col-6">
               <div class="city-temp">
-                <header>
-                  <span id="changeCity">City Name</span><br />
-                  <span class="day-time"><strong> time</strong></span>
+                <span id="changeCity">City Name</span><br />
+                <span id="lastUpdate"
+                  >Last update:<span id="day_time"> time</span></span
+                >
 
-                  <br />
-                </header>
                 <br />
-                <i class="fa-solid fa-cloud-sun-rain cloudy-rainy"></i>
-                <span class="degree">
-                  <span id="realDegree">?</span
-                  ><a href="" id="celsius"> ℃ </a>|<a href="" id="fahrenheit"
-                    >℉
-                  </a></span
-                >
-                <br />
-                Description:<span id="descripsion"
-                  ><strong> Cloudy/Rainy</strong></span
-                >
-                <br />
-                Chance of Rain <span class="chance">20</span>%
+                <div class="d-flex weather-temperature">
+                  <img src=".." alt="" id="icon" />
+                  <div class="degree">
+                    <span id="realDegree">?</span
+                    ><span class="unit"
+                      ><a href="#" id="celsius" class="active"> ℃ </a>|<a
+                        href="#"
+                        id="fahrenheit"
+                        >℉
+                      </a>
+                    </span>
+                  </div>
+                </div>
+
+                Description:<span id="descripsion"><strong> ... </strong></span>
               </div>
             </div>
 
             <div class="col-6">
               <section class="more-explain">
-                <span class="fulltime"> 2022/11/26 11:35 AM </span>
+                <span id="fulltime"> 2022/11/26 11:35 AM </span>
                 <br />
                 Humidity <span id="humidity">7</span>
                 <br />
                 <i class="fa-solid fa-wind"></i>
                 Wind <strong id="windSpeed">5</strong> km/h
               </section>
-              <button type="button" class="btn btn-primary seedaysforecast">
-                SEE 10 DAYS FORECAST
+              <button type="button" class="btn btn-primary seedaysforecast w-">
+                See 10 Days Forecast
               </button>
             </div>
           </div>
+          <br />
           <div class="card">
             <div class="card-body box-forecast">
               <div class="row box-row">

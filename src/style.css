@@ -2,7 +2,7 @@
   display: block;
   margin-top: 40px;
   width: 100%;
-  background: rgb(91, 155, 144) url("../images/partycloudy.jpg");
+  background: rgb(87, 121, 185) url("../images/weather.jpg");
   background-size: 100%;
   max-width: 800px;
 }
@@ -12,31 +12,52 @@ body {
   font-family: "Alegreya Sans", sans-serif;
   color: white;
 }
-header {
+#changeCity {
   font-size: 40px;
   margin: 0 auto;
   font-weight: 900;
   color: azure;
+  margin-bottom: 0;
 }
-.degree {
-  font-size: 40px;
-  font-weight: 600;
+#day_time {
+  font-size: 18px;
+  font-weight: 100px;
 }
+
+#lastUpdate {
+  font-size: 15px;
+  margin-top: 0;
+}
+
 #realDegree {
   font-size: 60px;
+  font-weight: 300px;
+  margin-left: 0;
 }
-#celsius {
-  color: white;
-}
+
 #celsius:hover {
-  color: white;
-  cursor: pointer;
+  text-decoration: none;
+  cursor: default;
 }
 #fahrenheit:hover {
-  color: white;
-  cursor: pointer;
+  text-decoration: none;
+  cursor: default;
 }
-.descripsion {
+.weather-temperature .unit {
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  bottom: 20px;
+}
+.weather-temperature .active {
+  color: white;
+  cursor: default;
+}
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
+#descripsion {
+  text-transform: capitalize;
   margin: 0 auto;
   font-size: 20px;
   font-weight: 300;
@@ -60,13 +81,13 @@ header {
   color: rgb(58, 158, 165);
 }
 .box-forecast {
-  background-color: #2e4b58;
+  background-color: #1b7bb0;
   color: white;
 }
 .seedaysforecast {
   position: relative;
   top: 70px;
-  left: 100px;
+  left: 150px;
   padding: 2px;
   margin-bottom: 0;
   font-size: 15px;
