@@ -72,26 +72,7 @@ body {
   margin-top: 40px;
   margin-right: 5px;
 }
-.box-row {
-  font-size: 18px;
-  font-weight: 100;
-}
-.weather-icone {
-  font-size: 45px;
-  color: rgb(58, 158, 165);
-}
-.box-forecast {
-  background-color: #1b7bb0;
-  color: white;
-}
-.seedaysforecast {
-  position: relative;
-  top: 70px;
-  left: 150px;
-  padding: 2px;
-  margin-bottom: 0;
-  font-size: 15px;
-}
+
 #currentLocation {
   padding: 10px, 20px;
 }
