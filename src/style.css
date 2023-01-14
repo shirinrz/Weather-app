@@ -34,6 +34,12 @@ body {
   font-weight: 300px;
   margin-left: 0;
 }
+#celsius {
+  text-decoration: none;
+}
+#fahrenheit {
+  text-decoration: none;
+}
 
 #celsius:hover {
   text-decoration: none;
@@ -78,4 +84,18 @@ body {
 }
 .codename {
   color: black;
+}
+
+.weather-forecast {
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: aliceblue;
+}
+.date-forcaste {
+  font-size: 15px;
+}
+#forecast-temp-max {
+  font-weight: bolder;
 }
