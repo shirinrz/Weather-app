@@ -115,6 +115,7 @@ searchForm.addEventListener("click", search);
 function navigateCurrentLocation() {
   navigator.geolocation.getCurrentPosition(locationTemp);
 }
+
 function locationTemp(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -133,8 +134,7 @@ function changeCtoF(event) {
   let fahrenheiTemperature = document.querySelector("#realDegree");
   convertC.classList.remove("active");
   convertF.classList.add("active");
-  //let tempF = convert.innerHTML; // choose degree from html//
-  //tempF = Number(tempF); // because innerHTML is a string I should change it to integer value//
+
   fahrenheiTemperature.innerHTML = Math.round(
     (celsiusTemperature * 9) / 5 + 32
   );
