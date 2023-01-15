@@ -17,13 +17,14 @@ let min = date.getMinutes();
 if (min < 10) {
   min = `0${min}`;
 }
+let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 let year = date.getFullYear();
-let month = date.getMonth();
+let month = months[date.getMonth()];
 let rightDate = date.getDate();
 
 document.querySelector("#day_time").innerHTML = ` ${day}, ${hour} : ${min} `;
 let fullTime = document.querySelector("#fulltime");
-fullTime.innerHTML = `${year}/${month}/${rightDate}    ${hour}:${min}`;
+fullTime.innerHTML = `${year}/${month}/${rightDate}  ,   ${hour}:${min}`;
 
 function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
