@@ -31,7 +31,7 @@ body {
 
 #realDegree {
   font-size: 60px;
-  font-weight: 300px;
+  font-weight: bolder;
   margin-left: 0;
 }
 #celsius {
@@ -68,9 +68,12 @@ body {
   font-size: 20px;
   font-weight: 300;
 }
-.cloudy-rainy {
-  font-size: 55px;
-  color: rgb(154, 230, 226);
+
+#icon {
+  margin-right: 0;
+}
+.degree {
+  margin-left: 0;
 }
 .more-explain {
   font-size: 20px;
