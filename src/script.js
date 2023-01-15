@@ -25,36 +25,53 @@ document.querySelector("#day_time").innerHTML = ` ${day}, ${hour} : ${min} `;
 let fullTime = document.querySelector("#fulltime");
 fullTime.innerHTML = `${year}/${month}/${rightDate}    ${hour}:${min}`;
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
 function displayForecast(response) {
-  console.log(response);
+  forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   forecastHTML = `<div class="row">`;
-  days = ["Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-      <div class="date-forcaste">${day}</div>
+
+  forecast.forEach(function (dailyForcast, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <div class="date-forcaste">${formatForecastDay(dailyForcast.dt)}</div> 
         <img
-        src="http://openweathermap.org/img/wn/04d@2x.png"
+        src="http://openweathermap.org/img/wn/${
+          dailyForcast.weather[0].icon
+        }@2x.png"
         alt=""
-        width="40"
+        width="45"
           />
         <div class="weather-forecast-temp">
-        <span id="forecast-temp-max">18°</span>
-        <span id="forecast-temp-min"> 12°</span>
+        <span id="forecast-temp-max">${Math.round(
+          dailyForcast.temp.max
+        )}°</span>
+        <span id="forecast-temp-min"> ${Math.round(
+          dailyForcast.temp.min
+        )}°</span>
         </div>
       </div>
    `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
 function getForcast(coordinates) {
   let apiKey = "7746bdeabca928cfedcad71e52fd9d66";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+
 function showTemperature(response) {
   document.querySelector(
     "#changeCity"
@@ -79,6 +96,7 @@ function showTemperature(response) {
     .setAttribute("alt", response.data.weather[0].description);
   getForcast(response.data.coord);
 }
+
 function search(event) {
   event.preventDefault();
   let city = document.querySelector("#search-city");

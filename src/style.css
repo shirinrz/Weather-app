@@ -95,6 +95,7 @@ body {
 }
 .date-forcaste {
   font-size: 15px;
+  font-weight: bold;
 }
 #forecast-temp-max {
   font-weight: bolder;
