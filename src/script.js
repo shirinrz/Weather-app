@@ -113,9 +113,6 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("click", search);
 
 // current location button
-function navigateCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(locationTemp);
-}
 
 function locationTemp(position) {
   let lat = position.coords.latitude;
@@ -124,6 +121,10 @@ function locationTemp(position) {
   let apiUrlC = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrlC).then(showTemperature);
+}
+
+function navigateCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(locationTemp);
 }
 
 let currentPositionTemp = document.querySelector("#currentLocation");
